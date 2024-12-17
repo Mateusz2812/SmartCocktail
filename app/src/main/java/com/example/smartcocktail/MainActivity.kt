@@ -4,10 +4,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.core.BaseActivity
+import com.example.core.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
-    override fun afterViews() {}
+    override fun afterViews() {
+        internalNavigator.hello()
+    }
 
     @Composable
     override fun ContentView() {

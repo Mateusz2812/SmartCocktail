@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Smart Cocktail"
 include(":app")
+include(":core")

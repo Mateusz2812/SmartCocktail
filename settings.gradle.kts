@@ -23,4 +23,3 @@ rootProject.name = "Smart Cocktail"
 include(":app")
 include(":core")
 include(":home")
-include(":navigation")

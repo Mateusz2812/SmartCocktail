@@ -16,6 +16,7 @@ fun BasicEditText(
     text: String = "",
     hint: String,
     editTextType: EditTextType = EditTextType.TEXT,
+    keyboardType: KeyboardType = KeyboardType.Text,
     onChangeValue: (value: String) -> Unit
 ) {
     OutlinedTextField(
@@ -25,25 +26,21 @@ fun BasicEditText(
         },
         label = { Text(hint) },
         singleLine = true,
-        visualTransformation = if (editTextType == EditTextType.PASSWORD) {
-            PasswordVisualTransformation()
-        } else {
-            VisualTransformation.None
-        },
-        keyboardOptions = KeyboardOptions(
-            keyboardType =
-            if (editTextType == EditTextType.PASSWORD) {
-                KeyboardType.Password
-            } else {
-                KeyboardType.Text
-            }
-        ),
+        visualTransformation = getVisualTransformation(editTextType),
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         modifier = modifier.fillMaxWidth()
     )
 }
 
+private fun getVisualTransformation(editTextType: EditTextType): VisualTransformation {
+    return if (editTextType == EditTextType.PASSWORD) {
+        PasswordVisualTransformation()
+    } else {
+        VisualTransformation.None
+    }
+}
+
 enum class EditTextType {
     PASSWORD,
-    TEXT,
-    NUMBERS
+    TEXT
 }

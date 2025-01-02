@@ -1,4 +1,4 @@
-package com.example.core.components
+package com.example.core.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions

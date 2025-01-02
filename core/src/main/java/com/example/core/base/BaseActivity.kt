@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
-import com.example.core.navigator.InternalNavigatorImpl
-import javax.inject.Inject
 
 
 abstract class BaseActivity : ComponentActivity() {

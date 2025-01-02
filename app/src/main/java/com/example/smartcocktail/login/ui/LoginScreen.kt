@@ -19,8 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.core.components.BasicEditText
-import com.example.core.components.EditTextType
+import com.example.core.ui.components.BasicEditText
+import com.example.core.ui.components.EditTextType
 import com.example.smartcocktail.R
 import com.example.smartcocktail.login.LoginViewModel
 import com.example.smartcocktail.login.model.LoginActionModel

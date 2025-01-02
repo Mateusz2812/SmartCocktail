@@ -13,7 +13,7 @@ class HomeInternalNavigatorImpl @Inject constructor() : InternalNavigator {
     override fun redirect(activity: BaseActivity, code: BasicInternalCode) {
         when (code) {
             BasicInternalCode.HOME_SCREEN -> {
-                val intent = Intent(activity, HomeActivity::class.java)
+                val intent = HomeActivity.prepareIntent(activity)
                 activity.startActivity(intent)
             }
 

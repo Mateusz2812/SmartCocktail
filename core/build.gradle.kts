@@ -53,4 +53,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 }

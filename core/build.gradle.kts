@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cores"
+    namespace = "com.smartCocktails.cores"
     compileSdk = 34
 
     defaultConfig {
@@ -34,6 +34,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

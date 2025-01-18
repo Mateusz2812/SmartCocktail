@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.BaseFlavor
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -7,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.smartcocktail"
+    namespace = "com.smartCocktails.smartcocktail"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.smartcocktail"
+        applicationId = "com.smartCocktails.smartcocktail"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -28,6 +30,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isDebuggable = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -38,6 +43,24 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    flavorDimensions +="version"
+
+    productFlavors {
+        create("dev"){
+            isDefault = true
+            applicationIdSuffix =".dev"
+            resValue("string", "app_name", "Smart Coctails (Dev)")
+            buildConfigField("String", "SERVER_URL", "\"https://www.thecocktaildb.com/api/json/v1/1/\"")
+        }
+
+        create("prod"){
+            applicationIdSuffix =".prod"
+            resValue("string", "app_name", "Smart Coctails")
+            buildConfigField("String", "SERVER_URL", "\"https://www.thecocktaildb.com/api/json/v1/1/\"")
+        }
     }
 }
 

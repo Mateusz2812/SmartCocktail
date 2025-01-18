@@ -3,7 +3,7 @@
     <application>
 
     <activity
-        android:name="com.example.home.HomeActivity"
+        android:name="com.smartCocktails.home.HomeActivity"
         android:exported="false" />
     </application>
 </manifest>

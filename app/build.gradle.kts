@@ -1,4 +1,6 @@
 import com.android.build.api.dsl.BaseFlavor
+import com.android.build.gradle.internal.dsl.ProductFlavor
+import org.gradle.api.Action
 
 plugins {
     alias(libs.plugins.android.application)
@@ -46,6 +48,8 @@ android {
         buildConfig = true
     }
 
+
+
     flavorDimensions +="version"
 
     productFlavors {
@@ -60,6 +64,27 @@ android {
             applicationIdSuffix =".prod"
             resValue("string", "app_name", "Smart Coctails")
             buildConfigField("String", "SERVER_URL", "\"https://www.thecocktaildb.com/api/json/v1/1/\"")
+        }
+
+        create("tst"){
+            applicationIdSuffix =".tst"
+            resValue("string", "app_name", "Smart Coctails (TST)")
+            buildConfigField("String", "SERVER_URL", "\"https://www.thecocktaildb.com/api/json/v1/1/\"")
+        }
+    }
+}
+
+androidComponents{
+    finalizeDsl { ext ->
+        ext.productFlavors.forEach {
+            val flavorName = it.name.uppercase()
+            it.buildConfigField("boolean", "IS_$flavorName", "true")
+            ext.productFlavors.forEach { otherFlavor ->
+                if (otherFlavor != it) {
+                    val otherFlavorName = otherFlavor.name.uppercase()
+                    it.buildConfigField("boolean", "IS_$otherFlavorName", "false")
+                }
+            }
         }
     }
 }

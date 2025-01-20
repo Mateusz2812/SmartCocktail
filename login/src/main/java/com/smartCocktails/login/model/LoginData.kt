@@ -1,4 +1,4 @@
-package com.smartCocktails.smartcocktail.login.model
+package com.smartCocktails.login.model
 
 data class LoginData(
     val id: String,

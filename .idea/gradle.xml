@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core-api" />
             <option value="$PROJECT_DIR$/home" />
+            <option value="$PROJECT_DIR$/login" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

@@ -1,4 +1,4 @@
-package com.smartCocktails.smartcocktail.login.ui
+package com.smartCocktails.login.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -21,10 +21,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.smartCocktails.core.ui.components.BasicEditText
 import com.smartCocktails.core.ui.components.EditTextType
-import com.smartCocktails.smartcocktail.R
-import com.smartCocktails.smartcocktail.login.LoginViewModel
-import com.smartCocktails.smartcocktail.login.model.LoginActionModel
-import com.smartCocktails.smartcocktail.login.model.LoginData
+import com.smartCocktails.login.LoginViewModel
+import com.smartCocktails.login.R
+import com.smartCocktails.login.model.LoginActionModel
 
 @Composable
 fun LoginScreen(
@@ -77,7 +76,7 @@ fun Logo(
 
 @Composable
 fun LogInEditText(
-    state: State<LoginData>,
+    state: State<com.smartCocktails.login.model.LoginData>,
     onChangeId: (id: String) -> Unit,
     style: LoginScreenStyle,
 ) {
@@ -93,7 +92,7 @@ fun LogInEditText(
 
 @Composable
 fun PasswordEditText(
-    state: State<LoginData>,
+    state: State<com.smartCocktails.login.model.LoginData>,
     onChangePassword: (password: String) -> Unit,
     style: LoginScreenStyle,
 ) {

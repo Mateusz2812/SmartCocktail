@@ -1,9 +1,7 @@
-package com.smartCocktails.smartcocktail.login
+package com.smartCocktails.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.smartCocktails.smartcocktail.login.model.LoginActionModel
-import com.smartCocktails.smartcocktail.login.model.LoginData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,23 +12,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor() : ViewModel() {
-    private val loginStateFlow = MutableStateFlow(LoginData("", ""))
+    private val loginStateFlow = MutableStateFlow(com.smartCocktails.login.model.LoginData("", ""))
     val loginState get() = loginStateFlow
 
     private val redirectEventStateFlow = MutableSharedFlow<RedirectEvent?>()
     val event = redirectEventStateFlow.asSharedFlow()
 
-    fun onProcessAction(event: LoginActionModel) {
+    fun onProcessAction(event: com.smartCocktails.login.model.LoginActionModel) {
         when (event) {
-            is LoginActionModel.IDChanged ->
+            is com.smartCocktails.login.model.LoginActionModel.IDChanged ->
                 loginStateFlow.update { it.copy(id = event.id) }
 
-            is LoginActionModel.PasswordChanged ->
+            is com.smartCocktails.login.model.LoginActionModel.PasswordChanged ->
                 loginStateFlow.update { it.copy(password = event.password) }
 
-            LoginActionModel.HowToClick -> {}
+            com.smartCocktails.login.model.LoginActionModel.HowToClick -> {}
 
-            LoginActionModel.LogInClick -> { navigateToHome(RedirectEvent.NavigateToHome) }
+            com.smartCocktails.login.model.LoginActionModel.LogInClick -> { navigateToHome(
+                RedirectEvent.NavigateToHome
+            ) }
         }
 
     }

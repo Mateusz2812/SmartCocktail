@@ -1,12 +1,14 @@
-package com.smartCocktails.smartcocktail.login
+package com.smartCocktails.login
 
+import android.content.Context
+import android.content.Intent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.lifecycleScope
 import com.smartCocktails.core.base.BaseActivity
 import com.smartCocktails.core.base.BasicInternalCode
 import com.smartCocktails.core.navigator.InternalNavigatorImpl
-import com.smartCocktails.smartcocktail.login.ui.LoginScreen
+import com.smartCocktails.login.ui.LoginScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -42,5 +44,11 @@ class LoginActivity : BaseActivity() {
     @Composable
     override fun ContentView() {
         LoginScreen(viewModel)
+    }
+
+    companion object {
+        fun prepareIntent(context: Context): Intent {
+            return Intent(context, LoginActivity::class.java)
+        }
     }
 }

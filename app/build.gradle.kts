@@ -48,8 +48,6 @@ android {
         buildConfig = true
     }
 
-
-
     flavorDimensions +="version"
 
     productFlavors {
@@ -100,6 +98,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(project(":core"))
     implementation(project(":home"))
+    implementation(project(":login"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

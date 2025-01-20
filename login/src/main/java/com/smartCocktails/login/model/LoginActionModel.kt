@@ -1,4 +1,4 @@
-package com.smartCocktails.smartcocktail.login.model
+package com.smartCocktails.login.model
 
 sealed class LoginActionModel {
     data class IDChanged(val id: String): LoginActionModel()

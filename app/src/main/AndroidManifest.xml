@@ -14,7 +14,7 @@
         android:theme="@style/Theme.SmartCocktail"
         tools:targetApi="31">
         <activity
-            android:name=".login.LoginActivity"
+            android:name="com.smartCocktails.smartcocktail.WelcomeActivity"
             android:exported="true"
             android:theme="@style/Theme.SmartCocktail">
             <intent-filter>

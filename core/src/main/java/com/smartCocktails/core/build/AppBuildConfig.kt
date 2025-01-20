@@ -4,4 +4,6 @@ import javax.inject.Inject
 
 interface AppBuildConfig {
     fun SERVER_URL(): String
+
+    fun IS_PROD(): Boolean
 }

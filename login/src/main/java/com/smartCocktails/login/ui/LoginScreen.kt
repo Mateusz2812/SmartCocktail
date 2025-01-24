@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
@@ -19,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.smartCocktails.core.ui.components.BasicButton
 import com.smartCocktails.core.ui.components.BasicEditText
 import com.smartCocktails.core.ui.components.EditTextType
 import com.smartCocktails.login.LoginViewModel
@@ -40,7 +39,6 @@ fun LoginScreen(
                 .padding(style.contentPadding)
                 .fillMaxSize()
         ) {
-            Logo(style)
             LogInEditText(
                 state = state,
                 onChangeId = { viewModel.onProcessAction(LoginActionModel.IDChanged(it)) },
@@ -62,20 +60,7 @@ fun LoginScreen(
 }
 
 @Composable
-fun Logo(
-    style: LoginScreenStyle
-) {
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Image(
-            painter = painterResource(R.drawable.ic_logo),
-            contentDescription = null,
-            modifier = Modifier.align(style.logoAlignment)
-        )
-    }
-}
-
-@Composable
-fun LogInEditText(
+private fun LogInEditText(
     state: State<com.smartCocktails.login.model.LoginData>,
     onChangeId: (id: String) -> Unit,
     style: LoginScreenStyle,
@@ -91,7 +76,7 @@ fun LogInEditText(
 }
 
 @Composable
-fun PasswordEditText(
+private fun PasswordEditText(
     state: State<com.smartCocktails.login.model.LoginData>,
     onChangePassword: (password: String) -> Unit,
     style: LoginScreenStyle,
@@ -107,20 +92,16 @@ fun PasswordEditText(
 }
 
 @Composable
-fun LogInButton(
+private fun LogInButton(
     onLogInClick: () -> Unit,
     style: LoginScreenStyle,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
-        Button(
-            onClick = onLogInClick,
-            modifier = Modifier
-                .padding(style.loginButtonPadding)
-                .align(style.loginButtonAlignment)
-                .fillMaxWidth(),
-        ) {
-            Text(stringResource(R.string.login_enter_button_text))
-        }
+        BasicButton(
+            modifier = Modifier.align(style.loginButtonAlignment),
+            text = stringResource(R.string.login_enter_button_text),
+            onButtonClick = onLogInClick
+        )
     }
 }
 
@@ -130,17 +111,15 @@ data class LoginScreenStyle(
     val logoAlignment: Alignment,
     val loginTextPadding: PaddingValues,
     val passwordTextPadding: PaddingValues,
-    val loginButtonPadding: PaddingValues,
     val loginButtonAlignment: Alignment
 )
 
 fun loginScreenStyle(
-    contentPadding: PaddingValues = PaddingValues(top = 100.dp, bottom = 40.dp),
+    contentPadding: PaddingValues = PaddingValues(top = 40.dp, bottom = 40.dp),
     contentAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     logoAlignment: Alignment = Alignment.Center,
     loginTextPadding: PaddingValues = PaddingValues(top = 20.dp, start = 16.dp, end = 16.dp),
     passwordTextPadding: PaddingValues = PaddingValues(top = 20.dp, start = 16.dp, end = 16.dp),
-    loginButtonPadding: PaddingValues = PaddingValues(top = 20.dp, start = 16.dp, end = 16.dp),
     loginButtonAlignment: Alignment = Alignment.BottomCenter,
 ) = LoginScreenStyle(
     contentPadding = contentPadding,
@@ -148,6 +127,5 @@ fun loginScreenStyle(
     logoAlignment = logoAlignment,
     loginTextPadding = loginTextPadding,
     passwordTextPadding = passwordTextPadding,
-    loginButtonPadding = loginButtonPadding,
     loginButtonAlignment = loginButtonAlignment
 )

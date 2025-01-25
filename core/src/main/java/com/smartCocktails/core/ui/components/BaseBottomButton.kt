@@ -76,12 +76,16 @@ fun defaultButtonStyle(
 )
 
 @Composable
-fun borderButtonStyle(): BasicButtonStyle = defaultButtonStyle(
-    buttonColor = colorResource(R.color.white),
-    buttonBorderStroke = BorderStroke(width = 1.dp, color = colorResource(R.color.colorPrimary)),
-    buttonTextStyle = buttonBaseTextStyle.copy(
+fun borderButtonStyle(
+    buttonColor: Color = colorResource(R.color.white),
+    buttonBorderStroke: BorderStroke = BorderStroke(width = 1.dp, color = colorResource(R.color.colorPrimary)),
+    buttonTextStyle: TextStyle = buttonBaseTextStyle.copy(
         color = colorResource(R.color.colorPrimary),
     )
+): BasicButtonStyle = defaultButtonStyle(
+    buttonColor = buttonColor,
+    buttonBorderStroke = buttonBorderStroke,
+    buttonTextStyle = buttonTextStyle
 )
 
 data class BasicButtonStyle(

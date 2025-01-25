@@ -15,8 +15,8 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     private val loginStateFlow = MutableStateFlow(com.smartCocktails.login.model.LoginData("", ""))
     val loginState get() = loginStateFlow
 
-    private val redirectEventStateFlow = MutableSharedFlow<RedirectEvent?>()
-    val event = redirectEventStateFlow.asSharedFlow()
+    private val loginRedirectEventStateFlow = MutableSharedFlow<LoginRedirectEvent?>()
+    val event = loginRedirectEventStateFlow.asSharedFlow()
 
     fun onProcessAction(event: com.smartCocktails.login.model.LoginActionModel) {
         when (event) {
@@ -29,21 +29,21 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             com.smartCocktails.login.model.LoginActionModel.HowToClick -> {}
 
             com.smartCocktails.login.model.LoginActionModel.LogInClick -> { navigateToHome(
-                RedirectEvent.NavigateToHome
+                LoginRedirectEvent.NavigateToHome
             ) }
         }
 
     }
 
     private fun navigateToHome(
-        event: RedirectEvent
+        event: LoginRedirectEvent
     ) {
         viewModelScope.launch {
-            redirectEventStateFlow.emit(event)
+            loginRedirectEventStateFlow.emit(event)
         }
     }
 }
 
-sealed class RedirectEvent {
-    data object NavigateToHome : RedirectEvent()
+sealed class LoginRedirectEvent {
+    data object NavigateToHome : LoginRedirectEvent()
 }

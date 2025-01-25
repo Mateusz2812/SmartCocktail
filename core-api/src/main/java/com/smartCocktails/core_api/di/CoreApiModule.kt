@@ -1,6 +1,7 @@
 package com.smartCocktails.core_api.di
 
 import com.smartCocktails.core.connection.retrofit.AppRetrofitImpl
+import com.smartCocktails.core_api.service.CoreApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,7 @@ import jakarta.inject.Singleton
 class CoreApiModule {
     @Provides
     @Singleton
-    fun provideApiService(retrofit: AppRetrofitImpl): com.smartCocktails.core_api.service.CoreApiService {
-        return retrofit.createService(com.smartCocktails.core_api.service.CoreApiService::class.java)
+    fun provideApiService(retrofit: AppRetrofitImpl): CoreApiService {
+        return retrofit.createService(CoreApiService::class.java)
     }
 }

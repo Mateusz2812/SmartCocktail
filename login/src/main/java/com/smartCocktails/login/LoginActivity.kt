@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
         lifecycleScope.launch {
             viewModel.event.collect { event ->
                 when (event) {
-                    is RedirectEvent.NavigateToHome -> {
+                    is LoginRedirectEvent.NavigateToHome -> {
                         internalNavigator.redirectInternalLink(
                             this@LoginActivity,
                             BasicInternalCode.HOME_SCREEN

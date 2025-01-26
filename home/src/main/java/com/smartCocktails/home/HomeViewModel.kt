@@ -2,17 +2,16 @@ package com.smartCocktails.home
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.runtime.mutableStateOf
 import androidx.core.content.ContextCompat.getString
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.home.R
 import com.smartCocktails.core.base.BaseActivity
 import com.smartCocktails.core.base.BasicInternalCode
-import com.smartCocktails.core.navigator.InternalNavigator
 import com.smartCocktails.core.navigator.InternalNavigatorImpl
-import com.smartCocktails.core_api.service.CoreApiService
+import com.smartCocktails.core_api.model.Drink
 import com.smartCocktails.home.model.HomeIntent
+import com.smartCocktails.home.useCase.AllCocktailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -21,28 +20,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val internalNavigator: InternalNavigatorImpl
+    private val internalNavigator: InternalNavigatorImpl,
+    private val allCocktailsUseCase: AllCocktailsUseCase
 ): ViewModel(){
 
-    private val homeStateFlow = MutableStateFlow<HomeIntent?>(null)
-    val state = homeStateFlow
+    private val cocktailsDataState: MutableStateFlow<List<Drink>> = MutableStateFlow(emptyList())
+    val dataState = cocktailsDataState
 
-   fun sendIntent(event: HomeIntent){
-       homeStateFlow.update { event }
-       handleEvent(homeStateFlow.value)
-   }
-
-    private fun handleEvent(event: HomeIntent?){
+    fun handleEvent(event: HomeIntent){
         when(event){
             HomeIntent.LoadAllCocktails -> loadAllCocktails()
             is HomeIntent.ShowCocktail -> TODO()
-            is HomeIntent.LogOut -> logout((homeStateFlow.value as HomeIntent.LogOut).context)
-            else ->{}
+            is HomeIntent.LogOut -> logout(event.context)
         }
     }
 
     private fun loadAllCocktails(){
         viewModelScope.launch {
+            val cocktails = allCocktailsUseCase.invoke().drinks
+            cocktailsDataState.update { cocktails }
         }
     }
 
@@ -58,5 +54,4 @@ class HomeViewModel @Inject constructor(
             }.create()
         dialog.show()
     }
-
 }

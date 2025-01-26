@@ -1,7 +1,5 @@
 package com.smartCocktails.core.connection.retrofit
 
-import retrofit2.Retrofit
-
-interface AppServiceApi {
+interface ApiServiceFactory {
     fun <T> createService(serviceClass: Class<T>): T
 }

@@ -4,10 +4,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class AppOkHttpClient @Inject constructor() {
+@Singleton
+class OkHttpClientFactoryImpl @Inject constructor(): OkHttpClientFactory {
 
-    fun create(): OkHttpClient = OkHttpClient.Builder().apply {
+    override fun create(): OkHttpClient = OkHttpClient.Builder().apply {
         addInterceptors()
         addTimeouts()
     }.build()

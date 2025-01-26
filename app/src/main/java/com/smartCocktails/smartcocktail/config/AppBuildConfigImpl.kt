@@ -2,6 +2,7 @@ package com.smartCocktails.smartcocktail.config
 
 import com.smartCocktails.core.build.AppBuildConfig
 import com.smartCocktails.smartcocktail.BuildConfig
+import jakarta.inject.Singleton
 import javax.inject.Inject
 
 class AppBuildConfigImpl @Inject constructor() : AppBuildConfig {

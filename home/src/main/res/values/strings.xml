@@ -4,4 +4,6 @@
     <string name="exit_popup_description">Do you want to log out?</string>
     <string name="exit_popup_positive_button">Log out</string>
     <string name="exit_popup_negative_button">No</string>
+    <string name="home_order_tile_text">Order cocktail!</string>
+    <string name="home_order_description_text">Here you can order the cocktail</string>
 </resources>

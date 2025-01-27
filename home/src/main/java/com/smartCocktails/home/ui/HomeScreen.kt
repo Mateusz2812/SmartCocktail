@@ -9,6 +9,9 @@ import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import com.example.home.R
 import com.smartCocktails.home.HomeViewModel
 
 @Composable
@@ -16,6 +19,11 @@ fun HomeScreen(viewModel: HomeViewModel) {
     val state = viewModel.dataState.collectAsState()
     Card(modifier = Modifier.fillMaxSize()) {
         Button(onClick = {}) { }
+        Tile(
+            titleText = stringResource(R.string.home_order_tile_text),
+            descriptionText = stringResource(R.string.home_order_description_text),
+            imagePainter = painterResource(R.drawable.logo_app)
+        )
         LazyColumn(state = rememberLazyListState()) {
             items(state.value){
 

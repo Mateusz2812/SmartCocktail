@@ -6,4 +6,8 @@
     <string name="exit_popup_negative_button">No</string>
     <string name="home_order_tile_text">Order cocktail!</string>
     <string name="home_order_description_text">Here you can order the cocktail</string>
+    <string name="home_show_cocktails_tile_text">Show all cocktails!</string>
+    <string name="home_show_cocktails_description_text">Here you can see all cocktails</string>
+    <string name="home_configure_tile_text">Configure cocktail!</string>
+    <string name="home_configure_description_text">Here you can create your own personalized cocktail</string>
 </resources>

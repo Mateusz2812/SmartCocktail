@@ -74,7 +74,7 @@ fun ColumnScope.TileImage(
         modifier = Modifier
             .weight(style.imageWeight)
             .fillMaxWidth(),
-        contentScale = ContentScale.Crop
+        contentScale = style.imageContentScale
     )
 }
 
@@ -108,8 +108,8 @@ fun DescriptionText(
 
 @Composable
 fun defaultTileStyle(
-    tileHeight: Dp = 300.dp,
-    tilePadding: PaddingValues = PaddingValues(16.dp),
+    tileHeight: Dp = 350.dp,
+    tilePadding: PaddingValues = PaddingValues(vertical = 10.dp, horizontal = 24.dp),
     tileShape: Shape = RoundedCornerShape(16.dp),
     tileElevation: CardElevation = CardDefaults.cardElevation(
         defaultElevation = 8.dp,
@@ -128,7 +128,7 @@ fun defaultTileStyle(
     descriptionTextStyle: TextStyle = smallText,
     descriptionTextColor: Color = colorResource(R.color.gray),
     imageWeight: Float = 1f,
-    imageContentScale: ContentScale = ContentScale.Fit
+    imageContentScale: ContentScale = ContentScale.Crop
 ) = BasicTileStyle(
     tileHeight = tileHeight,
     tilePadding = tilePadding,

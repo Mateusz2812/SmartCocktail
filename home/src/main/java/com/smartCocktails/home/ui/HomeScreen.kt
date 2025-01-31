@@ -49,8 +49,13 @@ fun OrderTile(
     BasicTile(
         titleText = stringResource(R.string.home_order_tile_text),
         descriptionText = stringResource(R.string.home_order_description_text),
-        imagePainter = painterResource(R.drawable.logo_app),
-        onTileClick = { viewModel.handleEvent(HomeIntent.GoToOrderCocktail) }
+        imagePainter = painterResource(R.drawable.ic_order_cocktail),
+        onTileClick = { viewModel.setEvent(HomeIntent.GoToOrderCocktail) },
+        style = defaultTileStyle(
+            tileColor = colorResource(R.color.order_title_color),
+            tileTextColor = colorResource(appCore.color.white),
+            descriptionTextColor = colorResource(appCore.color.gray),
+        )
     )
 }
 
@@ -61,8 +66,8 @@ fun ShowCocktailsTile(
     BasicTile(
         titleText = stringResource(R.string.home_show_cocktails_tile_text),
         descriptionText = stringResource(R.string.home_show_cocktails_description_text),
-        imagePainter = painterResource(R.drawable.cocktails_list),
-        onTileClick = { viewModel.handleEvent(HomeIntent.ShowCocktails) },
+        imagePainter = painterResource(R.drawable.ic_cocktails_list),
+        onTileClick = { viewModel.setEvent(HomeIntent.ShowCocktails) },
         style = defaultTileStyle(
             tileColor = colorResource(appCore.color.black),
             tileTextColor = colorResource(appCore.color.white),
@@ -78,7 +83,12 @@ fun ConfigureCocktailsTile(
     BasicTile(
         titleText = stringResource(R.string.home_configure_tile_text),
         descriptionText = stringResource(R.string.home_configure_description_text),
-        imagePainter = painterResource(R.drawable.configure_cocktail),
-        onTileClick = { viewModel.handleEvent(HomeIntent.GoToConfigureCocktail) }
+        imagePainter = painterResource(R.drawable.ic_configure_cocktail),
+        onTileClick = { viewModel.setEvent(HomeIntent.GoToConfigureCocktail) },
+        style = defaultTileStyle(
+            tileColor = colorResource(R.color.configure_title_color),
+            tileTextColor = colorResource(appCore.color.white),
+            descriptionTextColor = colorResource(appCore.color.gray),
+        )
     )
 }

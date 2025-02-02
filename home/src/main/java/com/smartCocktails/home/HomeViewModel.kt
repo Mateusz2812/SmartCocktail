@@ -26,13 +26,6 @@ class HomeViewModel @Inject constructor(
         homeScreenEvent.update { homeIntent }
     }
 
-    /*    private fun loadAllCocktails(){
-            viewModelScope.launch {
-                val cocktails = allCocktailsUseCase.invoke().drinks
-                cocktailsDataState.update { cocktails }
-            }
-        }*/
-
     fun logout(context: Context) {
         val dialog = AlertDialog.Builder(context)
             .setTitle(getString(context, R.string.exit_popup_title))
@@ -52,5 +45,13 @@ class HomeViewModel @Inject constructor(
                 dialog.dismiss()
             }.create()
         dialog.show()
+    }
+
+    fun openCocktailsList(context: Context) {
+        internalNavigator.redirectInternalLink(
+            context as BaseActivity,
+            BasicInternalCode.COCKTAILS_LIST
+        )
+
     }
 }

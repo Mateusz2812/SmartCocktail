@@ -8,7 +8,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.smartCocktails.core.base.BaseActivity
 import com.smartCocktails.order.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OrderCocktailActivity : BaseActivity() {
 
     @Composable

@@ -34,7 +34,10 @@ class HomeActivity : BaseActivity() {
         lifecycleScope.launch {
             viewModel.getHomeScreenEvent.collect {
                 when (it) {
-                    HomeIntent.GoToOrderCocktail -> {}
+                    HomeIntent.GoToOrderCocktail -> {
+                        viewModel.openCocktailsList(this@HomeActivity)
+                    }
+
                     HomeIntent.ShowCocktails -> {}
                     HomeIntent.GoToConfigureCocktail -> {}
                     is HomeIntent.LogOut -> viewModel.logout(this@HomeActivity)

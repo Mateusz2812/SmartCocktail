@@ -2,19 +2,41 @@ package com.smartCocktails.order.coctkatilslist
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.smartCocktails.core.base.BaseActivity
-import com.smartCocktails.order.R
+import com.smartCocktails.order.coctkatilslist.model.CocktailsListIntent
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CocktailsListActivity : BaseActivity() {
+    private val viewModel: CocktailsListViewModel by viewModels()
+
+    override fun afterViews() {
+        setupHandlingEvent()
+        viewModel.setEvent(CocktailsListIntent.LoadData)
+    }
+
     @Composable
     override fun ContentView() {
-        TODO("Not yet implemented")
+        Card {  }
+    }
+
+    private fun setupHandlingEvent(){
+        lifecycleScope.launch {
+            viewModel.getCocktailsListEvent.collect {
+                when (it) {
+                    CocktailsListIntent.LoadData -> viewModel.getAllCocktails()
+                    CocktailsListIntent.OpenFilters -> TODO()
+                    is CocktailsListIntent.SearchCocktail -> TODO()
+                    is CocktailsListIntent.ShowDrink -> TODO()
+                    else -> {}
+                }
+            }
+        }
     }
 
     companion object{

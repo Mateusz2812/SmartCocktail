@@ -99,6 +99,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":home"))
     implementation(project(":login"))
+    implementation(project(":order"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -9,7 +9,11 @@ import javax.inject.Inject
 class OrderLinkNavigator @Inject constructor() : InternalNavigator {
     override fun redirect(activity: BaseActivity, code: BasicInternalCode) {
         when (code) {
-            BasicInternalCode.COCKTAILS_LIST -> CocktailsListActivity.prepareIntent(activity)
+            BasicInternalCode.COCKTAILS_LIST ->
+                with(activity){
+                    startActivity(CocktailsListActivity.prepareIntent(this))
+                }
+
             else -> {}
         }
     }

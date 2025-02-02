@@ -14,5 +14,4 @@ data class Drink(
     val image: String,
     @SerializedName("idDrink")
     val id: String,
-
 )

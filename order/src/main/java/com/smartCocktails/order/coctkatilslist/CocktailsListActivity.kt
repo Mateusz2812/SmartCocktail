@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.lifecycleScope
 import com.smartCocktails.core.base.BaseActivity
 import com.smartCocktails.order.coctkatilslist.model.CocktailsListIntent
+import com.smartCocktails.order.coctkatilslist.ui.CocktailsListScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,7 +23,7 @@ class CocktailsListActivity : BaseActivity() {
 
     @Composable
     override fun ContentView() {
-        Card {  }
+        CocktailsListScreen(viewModel)
     }
 
     private fun setupHandlingEvent(){

@@ -1,6 +1,6 @@
 package com.smartCocktails.order.service
 
-import com.smartCocktails.core_api.model.AllCocktailsResponse
+import com.smartCocktails.order.service.model.AllCocktailsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

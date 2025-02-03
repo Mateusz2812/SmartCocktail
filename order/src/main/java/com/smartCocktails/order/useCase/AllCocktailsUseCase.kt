@@ -1,6 +1,6 @@
 package com.smartCocktails.order.useCase
 
-import com.smartCocktails.core_api.model.AllCocktailsResponse
+import com.smartCocktails.order.service.model.AllCocktailsResponse
 import com.smartCocktails.order.service.OrderServiceApi
 import javax.inject.Inject
 

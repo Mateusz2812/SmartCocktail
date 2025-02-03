@@ -1,6 +1,6 @@
 package com.smartCocktails.order.coctkatilslist.model
 
-import com.smartCocktails.core_api.model.Drink
+import com.smartCocktails.order.service.model.Drink
 
 data class CocktailsListState(
     val isLoading: Boolean = false,

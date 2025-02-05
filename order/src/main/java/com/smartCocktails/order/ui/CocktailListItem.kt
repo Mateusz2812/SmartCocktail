@@ -1,5 +1,6 @@
 package com.smartCocktails.order.ui
 
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -17,14 +18,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import coil3.compose.rememberAsyncImagePainter
-import coil3.request.ImageRequest
-import coil3.request.crossfade
-import coil3.request.error
+import coil.compose.AsyncImage
+import coil.request.CachePolicy
+import coil.request.ImageRequest
 import com.smartCocktails.order.R
 import com.smartCocktails.order.model.CocktailListItemData
 
@@ -36,7 +36,7 @@ fun CocktailListItem(
 ) {
     Card(
         modifier = modifier
-            .height(120.dp)
+            .height(130.dp)
             .padding(vertical = 8.dp,
                 horizontal = 16.dp)
             .fillMaxWidth(),
@@ -59,11 +59,9 @@ private fun ItemRow(
     modifier: Modifier = Modifier,
     itemData: CocktailListItemData
 ){
-    Row(Modifier.fillMaxSize()) {
+    Row(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
         ItemImage(itemData = itemData)
         ItemName(itemData = itemData)
-
-
     }
 }
 
@@ -72,15 +70,12 @@ fun RowScope.ItemImage(
     modifier: Modifier = Modifier,
     itemData: CocktailListItemData
 ){
-    Image(
-        painter = rememberAsyncImagePainter(
-            ImageRequest.Builder(LocalContext.current)
-                .data(itemData.image)
-                .error(R.drawable.configure_cocktail)
-                .build()
-        ),
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(itemData.image)
+            .build(),
         contentDescription = "",
-        modifier = modifier.size(120.dp)
+        modifier = modifier.size(100.dp).clip(RoundedCornerShape(50)).align(Alignment.CenterVertically)
     )
 }
 
@@ -89,7 +84,7 @@ fun RowScope.ItemName(
     modifier: Modifier = Modifier,
     itemData: CocktailListItemData,
 ){
-    Box(modifier = modifier.align(Alignment.CenterVertically).padding(horizontal = 16.dp)) {
+    Box(modifier = modifier.align(Alignment.CenterVertically).padding(start = 24.dp)) {
         Text(
             text = itemData.name
         )

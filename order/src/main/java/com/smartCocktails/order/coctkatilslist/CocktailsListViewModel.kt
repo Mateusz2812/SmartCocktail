@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.smartCocktails.order.coctkatilslist.model.CocktailsListIntent
 import com.smartCocktails.order.coctkatilslist.model.CocktailsListState
 import com.smartCocktails.order.useCase.AllCocktailsUseCase
+import com.smartCocktails.order.useCase.GetCocktailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CocktailsListViewModel @Inject constructor(
-    private val allCocktailsUseCase: AllCocktailsUseCase
+    private val allCocktailsUseCase: AllCocktailsUseCase,
+    private val getCocktailUseCase: GetCocktailUseCase
 ) : ViewModel() {
 
     private val cocktailsListEvent = MutableStateFlow<CocktailsListIntent?>(null)
@@ -37,5 +39,7 @@ class CocktailsListViewModel @Inject constructor(
         }
     }
 
+    fun showDetailsCocktail(id :String){
 
+    }
 }

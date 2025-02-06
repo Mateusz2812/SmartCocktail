@@ -4,14 +4,17 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getString
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.home.R
 import com.smartCocktails.core.base.BaseActivity
 import com.smartCocktails.core.base.BasicInternalCode
 import com.smartCocktails.core.navigator.InternalNavigatorImpl
 import com.smartCocktails.home.model.HomeIntent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,11 +22,13 @@ class HomeViewModel @Inject constructor(
     private val internalNavigator: InternalNavigatorImpl
 ) : ViewModel() {
 
-    private val homeScreenEvent = MutableStateFlow<HomeIntent?>(null)
+    private val homeScreenEvent = MutableSharedFlow<HomeIntent>()
     val getHomeScreenEvent = homeScreenEvent
 
     fun setEvent(homeIntent: HomeIntent) {
-        homeScreenEvent.update { homeIntent }
+        viewModelScope.launch {
+            homeScreenEvent.emit( homeIntent)
+        }
     }
 
     fun logout(context: Context) {

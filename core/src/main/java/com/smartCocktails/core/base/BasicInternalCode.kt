@@ -4,5 +4,6 @@ enum class BasicInternalCode {
     HOW_TO_LOGIN,
     HOME_SCREEN,
     LOGIN_SCREEN,
-    COCKTAILS_LIST
+    COCKTAILS_LIST,
+    COCKTAIL_DETAILS
 }

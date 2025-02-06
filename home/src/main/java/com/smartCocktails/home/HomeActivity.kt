@@ -41,7 +41,6 @@ class HomeActivity : BaseActivity() {
                     HomeIntent.ShowCocktails -> {}
                     HomeIntent.GoToConfigureCocktail -> {}
                     is HomeIntent.LogOut -> viewModel.logout(this@HomeActivity)
-                    else -> {}
                 }
             }
         }

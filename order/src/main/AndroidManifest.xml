@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".details.CocktailDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".coctkatilslist.CocktailsListActivity"
             android:exported="false" />
         <activity

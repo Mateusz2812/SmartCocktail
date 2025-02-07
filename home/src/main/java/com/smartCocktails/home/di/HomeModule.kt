@@ -1,8 +1,7 @@
 package com.smartCocktails.home.di
 
-import com.smartCocktails.core.connection.retrofit.ApiServiceFactory
-import com.smartCocktails.core.navigator.InternalNavigator
-import com.smartCocktails.home.navigator.HomeInternalNavigatorImpl
+import com.smartCocktails.core.navigator.CodesNavigator
+import com.smartCocktails.home.navigator.HomeCodesNavigatorImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +14,5 @@ class HomeModule {
 
     @Provides
     @IntoSet
-    fun provideInternalNavigator(): InternalNavigator = HomeInternalNavigatorImpl()
+    fun provideInternalNavigator(): CodesNavigator = HomeCodesNavigatorImpl()
 }

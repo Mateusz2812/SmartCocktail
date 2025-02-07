@@ -1,6 +1,6 @@
-package com.smartCocktails.core.base
+package com.smartCocktails.core.navigator
 
-enum class BasicInternalCode {
+enum class AppInternalCodes {
     HOW_TO_LOGIN,
     HOME_SCREEN,
     LOGIN_SCREEN,

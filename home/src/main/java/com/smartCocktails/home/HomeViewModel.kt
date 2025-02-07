@@ -7,19 +7,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.home.R
 import com.smartCocktails.core.base.BaseActivity
-import com.smartCocktails.core.base.BasicInternalCode
-import com.smartCocktails.core.navigator.InternalNavigatorImpl
+import com.smartCocktails.core.navigator.AppInternalCodes
+import com.smartCocktails.core.navigator.InternalNavigator
 import com.smartCocktails.home.model.HomeIntent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val internalNavigator: InternalNavigatorImpl
+    private val internalNavigator: InternalNavigator
 ) : ViewModel() {
 
     private val homeScreenEvent = MutableSharedFlow<HomeIntent>()
@@ -38,7 +36,7 @@ class HomeViewModel @Inject constructor(
             .setPositiveButton(getString(context, R.string.exit_popup_positive_button)) { _, _ ->
                 internalNavigator.redirectInternalLink(
                     context as BaseActivity,
-                    BasicInternalCode.LOGIN_SCREEN
+                    AppInternalCodes.LOGIN_SCREEN
                 )
             }
             .setNegativeButton(
@@ -55,7 +53,7 @@ class HomeViewModel @Inject constructor(
     fun openCocktailsList(context: Context) {
         internalNavigator.redirectInternalLink(
             context as BaseActivity,
-            BasicInternalCode.COCKTAILS_LIST
+            AppInternalCodes.COCKTAILS_LIST
         )
 
     }

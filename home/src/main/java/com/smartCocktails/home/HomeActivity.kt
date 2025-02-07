@@ -7,19 +7,17 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.lifecycleScope
 import com.smartCocktails.core.base.BaseActivity
-import com.smartCocktails.core.navigator.InternalNavigatorImpl
+import com.smartCocktails.core.navigator.InternalNavigator
 import com.smartCocktails.home.model.HomeIntent
 import com.smartCocktails.home.ui.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.FlowCollector
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity() {
     @Inject
-    lateinit var internalNavigator: InternalNavigatorImpl
+    lateinit var internalNavigator: InternalNavigator
 
 
     private val viewModel: HomeViewModel by viewModels()

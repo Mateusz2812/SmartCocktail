@@ -1,7 +1,3 @@
-import com.android.build.api.dsl.BaseFlavor
-import com.android.build.gradle.internal.dsl.ProductFlavor
-import org.gradle.api.Action
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -12,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.smartCocktails.smartcocktail"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.smartCocktails.smartcocktail"

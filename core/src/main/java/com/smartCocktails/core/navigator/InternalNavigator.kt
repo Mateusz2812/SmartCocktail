@@ -1,12 +1,23 @@
 package com.smartCocktails.core.navigator
 
 import com.smartCocktails.core.base.BaseActivity
-import com.smartCocktails.core.base.BasicInternalCode
+import javax.inject.Inject
 
-interface InternalNavigator {
+class InternalNavigator @Inject constructor(
+    private val codesNavigators: Set<CodesNavigator>
+) {
+    private val codes = buildList {
+        codesNavigators.forEach {
+            addAll(it.knowInternalCodes)
+        }
+    }
 
-    fun redirect(
-        activity: BaseActivity,
-        code: BasicInternalCode
-    )
+    fun redirectInternalLink(activity: BaseActivity, code: AppInternalCodes) {
+        if (!codes.contains(code)){
+            return
+        }
+        codesNavigators.forEach {
+            it.redirect(activity, code)
+        }
+    }
 }

@@ -1,7 +1,7 @@
 package com.smartCocktails.login.di
 
-import com.smartCocktails.core.navigator.InternalNavigator
-import com.smartCocktails.login.navigator.LoginInternalNavigatorImpl
+import com.smartCocktails.core.navigator.CodesNavigator
+import com.smartCocktails.login.navigator.LoginCodesNavigatorImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,5 +14,5 @@ class LoginModule {
 
     @Provides
     @IntoSet
-    fun provideInternalNavigator(): InternalNavigator = LoginInternalNavigatorImpl()
+    fun provideInternalNavigator(): CodesNavigator = LoginCodesNavigatorImpl()
 }

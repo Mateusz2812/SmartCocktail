@@ -6,8 +6,8 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.lifecycleScope
 import com.smartCocktails.core.base.BaseActivity
-import com.smartCocktails.core.base.BasicInternalCode
-import com.smartCocktails.core.navigator.InternalNavigatorImpl
+import com.smartCocktails.core.navigator.AppInternalCodes
+import com.smartCocktails.core.navigator.InternalNavigator
 import com.smartCocktails.login.ui.LoginScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginActivity : BaseActivity() {
     @Inject
-    lateinit var internalNavigator: InternalNavigatorImpl
+    lateinit var internalNavigator: InternalNavigator
 
     private val viewModel: LoginViewModel by viewModels()
 
@@ -31,7 +31,7 @@ class LoginActivity : BaseActivity() {
                     is LoginRedirectEvent.NavigateToHome -> {
                         internalNavigator.redirectInternalLink(
                             this@LoginActivity,
-                            BasicInternalCode.HOME_SCREEN
+                            AppInternalCodes.HOME_SCREEN
                         )
                     }
 

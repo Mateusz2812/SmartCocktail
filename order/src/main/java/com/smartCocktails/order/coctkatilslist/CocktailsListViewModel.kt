@@ -2,6 +2,10 @@ package com.smartCocktails.order.coctkatilslist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.smartCocktails.core.base.BaseActivity
+import com.smartCocktails.core.navigator.AppInternalCodes
+import com.smartCocktails.core.navigator.InternalNavigator
+import com.smartCocktails.core.navigator.InternalNavigatorData
 import com.smartCocktails.order.coctkatilslist.model.CocktailsListIntent
 import com.smartCocktails.order.coctkatilslist.model.CocktailsListState
 import com.smartCocktails.order.useCase.AllCocktailsUseCase
@@ -15,13 +19,13 @@ import javax.inject.Inject
 @HiltViewModel
 class CocktailsListViewModel @Inject constructor(
     private val allCocktailsUseCase: AllCocktailsUseCase,
-    private val getCocktailUseCase: GetCocktailUseCase
+    private val internalNavigator: InternalNavigator
 ) : ViewModel() {
 
     private val cocktailsListEvent = MutableStateFlow<CocktailsListIntent?>(null)
     val getCocktailsListEvent = cocktailsListEvent
 
-    private val cocktailsListState= MutableStateFlow(CocktailsListState())
+    private val cocktailsListState = MutableStateFlow(CocktailsListState())
     val getCocktailsListState = cocktailsListState
 
     fun setEvent(event: CocktailsListIntent) {
@@ -32,14 +36,21 @@ class CocktailsListViewModel @Inject constructor(
         cocktailsListState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             val response = allCocktailsUseCase.invoke()
-            cocktailsListState.update { it.copy(
-                isLoading = false,
-                cocktailsList = response?.drinks.orEmpty()
-            ) }
+            cocktailsListState.update {
+                it.copy(
+                    isLoading = false,
+                    cocktailsList = response?.drinks.orEmpty()
+                )
+            }
         }
     }
 
-    fun showDetailsCocktail(id :String){
+    fun showCocktailDetails(activity: BaseActivity, id: String) {
+        internalNavigator.redirectInternalLink(
+            activity = activity,
+            code = AppInternalCodes.COCKTAIL_DETAILS,
+            navigatorData = InternalNavigatorData.CocktailDetailsData(id)
+        )
 
     }
 }

@@ -1,8 +1,5 @@
 package com.smartCocktails.order.ui
 
-import android.net.Uri
-import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -23,14 +20,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import coil.request.CachePolicy
 import coil.request.ImageRequest
-import com.smartCocktails.order.R
-import com.smartCocktails.order.model.CocktailListItemData
+import com.smartCocktails.order.model.CocktailItemsListData
 
 @Composable
 fun CocktailListItem(
-    itemData: CocktailListItemData,
+    itemData: CocktailItemsListData,
     modifier: Modifier = Modifier,
     onItemClick: () -> Unit
 ) {
@@ -57,7 +52,7 @@ fun CocktailListItem(
 @Composable
 private fun ItemRow(
     modifier: Modifier = Modifier,
-    itemData: CocktailListItemData
+    itemData: CocktailItemsListData
 ){
     Row(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
         ItemImage(itemData = itemData)
@@ -68,7 +63,7 @@ private fun ItemRow(
 @Composable
 fun RowScope.ItemImage(
     modifier: Modifier = Modifier,
-    itemData: CocktailListItemData
+    itemData: CocktailItemsListData
 ){
     AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
@@ -82,7 +77,7 @@ fun RowScope.ItemImage(
 @Composable
 fun RowScope.ItemName(
     modifier: Modifier = Modifier,
-    itemData: CocktailListItemData,
+    itemData: CocktailItemsListData,
 ){
     Box(modifier = modifier.align(Alignment.CenterVertically).padding(start = 24.dp)) {
         Text(

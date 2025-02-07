@@ -1,13 +1,14 @@
 package com.smartCocktails.order.service.model
 
 import com.google.gson.annotations.SerializedName
+import com.smartCocktails.order.model.CocktailItemDetailsData
 
 data class CocktailResponse(
     @SerializedName("drinks")
-    val drinks: List<Drink>
+    val drinks: List<CocktailDetails>
 )
 
-data class DrinkDetails(
+data class CocktailDetails(
     @SerializedName("idDrink")
     val idDrink: String,
     @SerializedName("strDrink")
@@ -63,7 +64,12 @@ data class DrinkDetails(
     @SerializedName("strMeasure10")
     val strMeasure10: String?,
 ) {
-    fun getIngredientsWithMeasure(): List<Pair<String?, String?>> {
+
+    fun transformToCocktailItemData() = CocktailItemDetailsData(
+        name = strDrink,
+    )
+
+    private fun getIngredientsWithMeasure(): List<Pair<String?, String?>> {
         return listOfNotNull(
             strIngredient1 to strMeasure1,
             strIngredient2 to strMeasure2,
@@ -78,7 +84,7 @@ data class DrinkDetails(
         )
     }
 
-    fun getIngredients(): List<String?> {
+    private fun getIngredients(): List<String?> {
         return listOfNotNull(
             strIngredient1,
             strIngredient2,

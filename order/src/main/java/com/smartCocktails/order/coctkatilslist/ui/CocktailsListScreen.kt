@@ -13,10 +13,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.smartCocktails.order.service.model.Drink
 import com.smartCocktails.order.R
 import com.smartCocktails.order.coctkatilslist.CocktailsListViewModel
-import com.smartCocktails.order.model.CocktailListItemData
 import com.smartCocktails.order.ui.CocktailListItem
 
 @Composable

@@ -21,7 +21,7 @@ class CocktailDetailsActivity : BaseActivity() {
     }
 
     companion object{
-        fun prepareIntent(context : Context): Intent{
+        fun prepareIntent(context : Context, id: String): Intent{
             return Intent(context, CocktailDetailsActivity::class.java)
         }
     }

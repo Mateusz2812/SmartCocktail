@@ -1,7 +1,7 @@
 package com.smartCocktails.order.service.model
 
 import com.google.gson.annotations.SerializedName
-import com.smartCocktails.order.model.CocktailListItemData
+import com.smartCocktails.order.model.CocktailItemsListData
 
 data class AllCocktailsResponse(
     @SerializedName("drinks")
@@ -16,7 +16,7 @@ data class Drink(
     @SerializedName("idDrink")
     val idDrink: String,
 ){
-    fun transformToCocktailItemData() = CocktailListItemData(
+    fun transformToCocktailItemData() = CocktailItemsListData(
         name = strDrink,
         image = strDrinkThumb,
         id = idDrink

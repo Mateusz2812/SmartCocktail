@@ -7,3 +7,7 @@ enum class AppInternalCodes {
     COCKTAILS_LIST,
     COCKTAIL_DETAILS
 }
+
+sealed class InternalNavigatorData{
+    data class CocktailDetailsData(val cocktailId: String) : InternalNavigatorData()
+}

@@ -8,6 +8,7 @@ interface CodesNavigator {
 
     fun redirect(
         activity: BaseActivity,
-        code: AppInternalCodes
+        code: AppInternalCodes,
+        navigatorData: InternalNavigatorData? = null
     )
 }

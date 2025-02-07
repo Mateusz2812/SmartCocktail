@@ -1,6 +1,9 @@
 package com.smartCocktails.core.navigator
 
+import android.widget.Toast
+import androidx.compose.ui.res.stringResource
 import com.smartCocktails.core.base.BaseActivity
+import com.smartCocktails.cores.R
 import javax.inject.Inject
 
 class InternalNavigator @Inject constructor(
@@ -12,12 +15,21 @@ class InternalNavigator @Inject constructor(
         }
     }
 
-    fun redirectInternalLink(activity: BaseActivity, code: AppInternalCodes) {
-        if (!codes.contains(code)){
+    fun redirectInternalLink(
+        activity: BaseActivity,
+        code: AppInternalCodes,
+        navigatorData: InternalNavigatorData? = null
+    ) {
+        if (!codes.contains(code)) {
+            Toast.makeText(
+                activity,
+                activity.getString(R.string.no_access_toast),
+                Toast.LENGTH_LONG
+            ).show()
             return
         }
         codesNavigators.forEach {
-            it.redirect(activity, code)
+            it.redirect(activity, code, navigatorData)
         }
     }
 }

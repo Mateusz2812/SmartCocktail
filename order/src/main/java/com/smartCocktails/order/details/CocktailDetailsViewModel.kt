@@ -2,8 +2,6 @@ package com.smartCocktails.order.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.smartCocktails.order.coctkatilslist.model.CocktailsListIntent
-import com.smartCocktails.order.coctkatilslist.model.CocktailsListState
 import com.smartCocktails.order.details.model.CocktailDetailsIntent
 import com.smartCocktails.order.details.model.CocktailDetailsState
 import com.smartCocktails.order.useCase.GetCocktailUseCase
@@ -26,6 +24,10 @@ class CocktailDetailsViewModel @Inject constructor(
 
     fun setEvent(event: CocktailDetailsIntent) {
         cocktailDetailsEvent.update { event }
+    }
+
+    fun changeFavouriteState(){
+        cocktailDetailsState.update { it.copy(isFavourite = !it.isFavourite) }
     }
 
     fun getCocktailDetails(id: String) {

@@ -51,6 +51,5 @@ class CocktailsListViewModel @Inject constructor(
             code = AppInternalCodes.COCKTAIL_DETAILS,
             navigatorData = InternalNavigatorData.CocktailDetailsData(id)
         )
-
     }
 }

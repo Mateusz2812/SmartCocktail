@@ -25,9 +25,10 @@ class OrderLinkCodesNavigator @Inject constructor() : CodesNavigator {
 
                 AppInternalCodes.COCKTAIL_DETAILS -> {
                     val data = navigatorData as InternalNavigatorData.CocktailDetailsData
-                    startActivity(CocktailDetailsActivity.prepareIntent(this))
+                    startActivity(CocktailDetailsActivity.prepareIntent(this, data.cocktailId))
 
                 }
+
                 else -> {}
             }
         }

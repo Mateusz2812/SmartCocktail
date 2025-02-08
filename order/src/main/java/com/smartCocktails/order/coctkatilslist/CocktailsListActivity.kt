@@ -29,9 +29,14 @@ class CocktailsListActivity : BaseActivity() {
         lifecycleScope.launch {
             viewModel.getCocktailsListEvent.collect {
                 when (it) {
+                    CocktailsListIntent.OnBackClick -> onBackPressedDispatcher.onBackPressed()
+
                     CocktailsListIntent.LoadData -> viewModel.getAllCocktails()
+
                     CocktailsListIntent.OpenFilters -> TODO()
+
                     is CocktailsListIntent.SearchCocktail -> TODO()
+
                     is CocktailsListIntent.ShowDrink -> viewModel.showCocktailDetails(
                         this@CocktailsListActivity,
                         it.id

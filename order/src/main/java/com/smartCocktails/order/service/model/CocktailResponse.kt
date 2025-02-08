@@ -14,15 +14,15 @@ data class CocktailDetails(
     @SerializedName("strDrink")
     val strDrink: String,
     @SerializedName("strCategory")
-    val strCategory: String,
+    val strCategory: String?,
     @SerializedName("strAlcoholic")
-    val strAlcoholic: String,
+    val strAlcoholic: String?,
     @SerializedName("strGlass")
-    val strGlass: String,
+    val strGlass: String?,
     @SerializedName("strInstructions")
-    val strInstructions: String,
+    val strInstructions: String?,
     @SerializedName("strDrinkThumb")
-    val strDrinkThumb: String,
+    val strDrinkThumb: String?,
     @SerializedName("strIngredient1")
     val strIngredient1: String?,
     @SerializedName("strIngredient2")

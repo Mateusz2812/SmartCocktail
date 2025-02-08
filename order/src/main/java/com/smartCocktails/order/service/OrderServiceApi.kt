@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface OrderServiceApi {
     @GET("lookup.php")
-    fun getCocktail(@Query("i") id: String): Response<CocktailResponse>
+    suspend fun getCocktail(@Query("i") id: String): Response<CocktailResponse>
 
     @GET("filter.php?c=Cocktail")
     suspend fun getAllCocktails(): Response<AllCocktailsResponse>

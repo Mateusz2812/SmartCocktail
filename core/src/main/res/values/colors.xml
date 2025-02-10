@@ -15,6 +15,7 @@
     <color name="yellow">#FFFF00</color>
     <color name="cyan">#00FFFF</color>
     <color name="magenta">#FF00FF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <!-- Blue Shades -->
     <color name="blueLight">#ADD8E6</color>
@@ -29,4 +30,5 @@
 
     <color name="errorColor">#F44336</color>
     <color name="successColor">#4CAF50</color>
+    <color name="darkYellow">#DCB22A</color>
 </resources>

@@ -6,6 +6,7 @@ import com.smartCocktails.order.details.model.CocktailDetailsIntent
 import com.smartCocktails.order.details.model.CocktailDetailsState
 import com.smartCocktails.order.useCase.GetCocktailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -16,14 +17,14 @@ class CocktailDetailsViewModel @Inject constructor(
     private val getCocktailUseCase: GetCocktailUseCase,
 ): ViewModel() {
 
-    private val cocktailDetailsEvent = MutableStateFlow<CocktailDetailsIntent?>(null)
+    private val cocktailDetailsEvent = MutableSharedFlow<CocktailDetailsIntent>()
     val getCocktailDetailsEvent= cocktailDetailsEvent
 
     private val cocktailDetailsState = MutableStateFlow(CocktailDetailsState())
     val getCocktailDetailsState = cocktailDetailsState
 
     fun setEvent(event: CocktailDetailsIntent) {
-        cocktailDetailsEvent.update { event }
+        viewModelScope.launch { cocktailDetailsEvent.emit( event ) }
     }
 
     fun changeFavouriteState(){

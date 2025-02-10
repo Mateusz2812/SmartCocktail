@@ -46,7 +46,6 @@ class CocktailDetailsActivity : BaseActivity() {
                         }
                     }
                     CocktailDetailsIntent.OnBackClick -> onBackPressedDispatcher.onBackPressed()
-                    else -> {}
                 }
             }
         }

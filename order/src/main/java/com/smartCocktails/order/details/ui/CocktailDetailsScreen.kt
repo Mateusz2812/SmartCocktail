@@ -1,21 +1,28 @@
 package com.smartCocktails.order.details.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.smartCocktails.core.ui.components.TopBarWithBack
@@ -64,24 +71,26 @@ fun BoxScope.FloatingFavoriteButton(
     isFavourite: Boolean = false,
     onClick: () -> Unit
 ) {
-    FloatingActionButton(
-        onClick = onClick,
+    val interactionSource = remember { MutableInteractionSource() }
+    Box(
         modifier = Modifier
             .padding(16.dp)
             .align(Alignment.BottomEnd)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+                onClick = onClick
+            ),
     ) {
         Icon(
-            imageVector = if (isFavourite) {
-                Icons.Filled.Star
-            } else {
-                Icons.Outlined.Star
-            },
+            imageVector = Icons.Filled.Star,
             contentDescription = null,
             tint = if (isFavourite) {
-                Color.Yellow
+                colorResource(com.smartCocktails.cores.R.color.darkYellow)
             } else {
-                Color.Gray
-            }
+                colorResource(com.smartCocktails.cores.R.color.gray)
+            },
+            modifier = Modifier.size(60.dp)
         )
     }
 }

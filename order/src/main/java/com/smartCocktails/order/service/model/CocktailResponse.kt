@@ -67,6 +67,13 @@ data class CocktailDetails(
 
     fun transformToCocktailItemData() = CocktailItemDetailsData(
         name = strDrink,
+        image = strDrinkThumb,
+        id = idDrink,
+        category = strCategory,
+        glass = strGlass,
+        alcoholic = strAlcoholic,
+        ingredients = getIngredients(),
+        ingredientsWithMeasure = getIngredientsWithMeasure()
     )
 
     private fun getIngredientsWithMeasure(): List<Pair<String?, String?>> {

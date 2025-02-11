@@ -31,4 +31,5 @@
     <color name="errorColor">#F44336</color>
     <color name="successColor">#4CAF50</color>
     <color name="darkYellow">#DCB22A</color>
+    <color name="lightYellow">#E2CD7F</color>
 </resources>

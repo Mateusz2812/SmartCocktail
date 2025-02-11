@@ -2,4 +2,5 @@
     <string name="cocktails_list_search_hint">Search</string>
     <string name="cocktails_list_top_bar">Cocktails list</string>
     <string name="cocktail_details_top_bar">Cocktail details</string>
+    <string name="cocktail_details_ingredients_label">Ingredients</string>
 </resources>

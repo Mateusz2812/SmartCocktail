@@ -36,20 +36,30 @@ class CocktailDetailsActivity : BaseActivity() {
     }
 
     private fun setupHandlingEvent() {
+        val cocktailId = intent.getStringExtra(COCKTAIL_ID)
         lifecycleScope.launch {
             viewModel.getCocktailDetailsEvent.collect {
                 when (it) {
-                    CocktailDetailsIntent.FavouriteCocktail -> viewModel.changeFavouriteState()
+                    CocktailDetailsIntent.FavouriteCocktail -> viewModel.changeFavouriteState(
+                        this@CocktailDetailsActivity,
+                        cocktailId
+                    )
+
                     CocktailDetailsIntent.LoadCocktailData -> {
-                        intent.getStringExtra(COCKTAIL_ID)?.let { id ->
-                            viewModel.getCocktailDetails(id)
+                        cocktailId?.let { id ->
+                            viewModel.getCocktailDetails(
+                                this@CocktailDetailsActivity,
+                                id
+                            )
                         }
                     }
+
                     CocktailDetailsIntent.OnBackClick -> onBackPressedDispatcher.onBackPressed()
                 }
             }
         }
     }
+
     companion object {
         private const val COCKTAIL_ID = "COCKTAIL_ID"
         fun prepareIntent(context: Context, id: String): Intent {

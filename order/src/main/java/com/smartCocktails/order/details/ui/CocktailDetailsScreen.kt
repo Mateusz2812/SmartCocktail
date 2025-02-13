@@ -1,5 +1,7 @@
 package com.smartCocktails.order.details.ui
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -14,11 +16,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,6 +33,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -73,14 +79,15 @@ fun CocktailDetails(
     state: State<CocktailDetailsState>,
     onFavouriteClick: () -> Unit
 ) {
-    Box(modifier.fillMaxSize()) {
+    Box(modifier.fillMaxSize().padding(horizontal = 16.dp)) {
+        state.value.details?.let {
+            CocktailDetailsCard(it)
+        }
+
         FloatingFavoriteButton(
             isFavourite = state.value.isFavourite,
             onClick = onFavouriteClick
         )
-        state.value.details?.let {
-            CocktailDetailsCard(it)
-        }
     }
 }
 
@@ -96,7 +103,6 @@ fun CocktailDetailsCard(
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
     ) {
         Column {
             AsyncImage(
@@ -138,16 +144,13 @@ fun BoxScope.FloatingFavoriteButton(
     isFavourite: Boolean = false,
     onClick: () -> Unit
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-    Box(
+    FloatingActionButton(
+        shape = CircleShape,
         modifier = Modifier
-            .padding(16.dp)
-            .align(Alignment.BottomEnd)
-            .clickable(
-                interactionSource = interactionSource,
-                indication = null,
-                onClick = onClick
-            ),
+            .border(width = 1.dp, shape = CircleShape, color = Color.Gray)
+            .align(Alignment.BottomEnd),
+        onClick = { onClick() },
+        containerColor = Color.White
     ) {
         Icon(
             imageVector = Icons.Filled.Star,
@@ -157,7 +160,7 @@ fun BoxScope.FloatingFavoriteButton(
             } else {
                 colorResource(com.smartCocktails.cores.R.color.gray)
             },
-            modifier = Modifier.size(60.dp)
+            modifier = Modifier.size(68.dp).padding(4.dp)
         )
     }
 }

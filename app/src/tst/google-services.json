@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "625798993869",
+    "project_id": "smartcocktailpl",
+    "storage_bucket": "smartcocktailpl.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625798993869:android:aea25155caf837c0ced684",
+        "android_client_info": {
+          "package_name": "com.smartCocktails.smartcocktail.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOf1Vk5vldOHLNGP7awXBxL7kCYGSVkIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625798993869:android:15b157f7165f65e8ced684",
+        "android_client_info": {
+          "package_name": "com.smartCocktails.smartcocktail.prod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOf1Vk5vldOHLNGP7awXBxL7kCYGSVkIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625798993869:android:f12782725cf53ccdced684",
+        "android_client_info": {
+          "package_name": "com.smartCocktails.smartcocktail.tst"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOf1Vk5vldOHLNGP7awXBxL7kCYGSVkIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

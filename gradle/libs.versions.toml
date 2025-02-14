@@ -17,6 +17,8 @@ okHttp = "4.10.0"
 retrofit = "2.9.0"
 coil = "2.6.0"
 activity = "1.10.0"
+googleServices = "4.4.2"
+firebase = "33.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +45,9 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+google-firebase = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase" }
+google-firebase-analytics ={ group = "com.google.firebase", name = "firebase-analytics" }
+google-firebase-messaging ={ group = "com.google.firebase", name = "firebase-messaging-ktx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -51,4 +56,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices"}
 

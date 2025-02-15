@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/order" />
+            <option value="$PROJECT_DIR$/push" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

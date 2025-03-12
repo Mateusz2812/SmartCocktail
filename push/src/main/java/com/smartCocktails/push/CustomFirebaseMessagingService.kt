@@ -7,18 +7,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CustomFirebaseMessagingService: FirebaseMessagingService() {
+class CustomFirebaseMessagingService : FirebaseMessagingService() {
 
     @Inject
     lateinit var pushServiceManager: PushServiceManager
 
     override fun onNewToken(token: String) {
-        Log.d("FCM","New token generated.")
+        Log.d("FCM", "New token generated.")
         super.onNewToken(token)
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
-        Log.d("FCM","New message received.")
-        super.onMessageReceived(message)
+        Log.d("FCM", "New message received.")
+        pushServiceManager.onMessageReceived(this, message)
     }
 }

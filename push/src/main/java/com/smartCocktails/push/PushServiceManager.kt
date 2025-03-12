@@ -2,11 +2,11 @@ package com.smartCocktails.push
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
-import android.os.Build
-import android.os.Message
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.RemoteMessage
+import com.smartCocktails.push.details.PushDetailsActivity
 import javax.inject.Inject
 
 
@@ -19,11 +19,16 @@ class PushServiceManager @Inject constructor() {
             .setContentText(message.notification?.body)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
+            .setContentIntent(getPushIntent(context))
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager
         manager?.notify(1, builder.build())
     }
 
+    private fun getPushIntent(context: Context): PendingIntent?{
+        return PendingIntent.getActivity(context,0, PushDetailsActivity.prepareIntent(context),
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE )
+    }
 
     fun createNotificationChannel(context: Context) {
         val channel = NotificationChannel(

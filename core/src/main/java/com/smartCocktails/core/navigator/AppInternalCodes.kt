@@ -5,7 +5,8 @@ enum class AppInternalCodes {
     HOME_SCREEN,
     LOGIN_SCREEN,
     COCKTAILS_LIST,
-    COCKTAIL_DETAILS
+    COCKTAIL_DETAILS,
+    USER_ORDERS_LIST
 }
 
 sealed class InternalNavigatorData{

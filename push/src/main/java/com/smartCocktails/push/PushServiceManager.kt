@@ -8,6 +8,7 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.RemoteMessage
 import com.smartCocktails.core.navigator.InternalNavigatorData
 import com.smartCocktails.push.details.PushDetailsActivity
+import com.smartCocktails.push.details.model.PushDetailsData
 import javax.inject.Inject
 
 
@@ -76,8 +77,8 @@ data class PushData(
     val date: String? = null,
     val graphicId: String? = null
 ){
-    fun toPushDetailsData(): InternalNavigatorData.PushDetailsData{
-        return  InternalNavigatorData.PushDetailsData(
+    fun toPushDetailsData(): PushDetailsData {
+        return  PushDetailsData(
             id = id,
             title = title,
             subtitle = subtitle,
